@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+</head>
+<body>
+<ul>
+    <h1>courses and professors</h1>
+    {% for course in courses %}
+        <ul>{{ course.professor }} {{ course.title }} {{ course.credits }} </ul>
+    {% endfor %}
+
+</ul>
+
+<h1>add courses</h1>
+<form action="." method="POST">
+    {{ form.as_p }}
+    <input type="submit" value="Add courses"/>
+    {% csrf_token %}
+
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Professor</title>
+</head>
+<body>
+    <h1>Total Professor</h1>
+<ul>
+    {% for profes in professor %}
+        <li>
+            {{ profes.first_name }} {{ profes.last_name }} {{ profes.titles }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h1>Add new professor</h1>
+<form action="." method="POST">
+    {{ form.as_p }}
+    <input type="submit" value="Add Professor"/>
+    {% csrf_token %}
+</form>
+</body>
+</html>
