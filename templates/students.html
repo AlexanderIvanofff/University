@@ -6,16 +6,18 @@
 </head>
 <body>
 <h1>Total Students</h1>
-<ul>
-    {% for student in students %}
-        <li>
-            {{ student.first_name }} {{ student.last_name }}
-        </li>
-    {% endfor %}
-</ul>
+<div data-model-name="add-form">
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.first_name }} {{ student.last_name }} {{ student.courses }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
 <h1>Add new student</h1>
-<form action="." method="POST">
+<form class="add" action="." method="POST">
     {{ form.as_p }}
     <input type="submit" value="Add Student"/>
     {% csrf_token %}
