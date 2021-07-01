@@ -3,13 +3,15 @@ from django.views import View
 
 from .forms import StudentForm, CoursesForm, ProfessorForm, TitleForm
 from .models import Student, Course, Professors, Title
+from .queries import get_students_and_there_courses_credits
 
 
-class TopStudents(View):
+class StudentsAndCoursesCredits(View):
     def get(self, request, *args, **kwargs):
-        students = Student.objects.raw('SELECT * FROM main_students')
+        students = Student.objects.raw(get_students_and_there_courses_credits())
+
         context = {'students': students}
-        return render(request, 'students.html', context)
+        return render(request, 'get_students_and_there_courses_credits.html', context)
 
 
 class StudentView(View):
