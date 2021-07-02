@@ -17,3 +17,12 @@ def get_top_courses():
            'FROM main_course left join main_student ms on main_course.id = ms.courses_id ' \
            'group by main_course.id ' \
            'order by count desc'
+
+
+def get_top_professors():
+    return 'SELECT *, count(mp.id) as count ' \
+           'FROM main_course ' \
+           'inner join main_professors mp on mp.id = main_course.professor_id ' \
+           'left join main_student ms on main_course.id = ms.courses_id ' \
+           'group by mp.id ' \
+           'limit 3'

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top professors</title>
+</head>
+<body>
+    <h1>Top professors</h1>
+<ul>
+    {% for professor in professors %}
+        <li>
+            {{ professor.first_name }} {{ professor.last_name }} {{ professor.count }}
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
