@@ -4,7 +4,7 @@ from django.views import View
 
 from .forms import StudentForm, CoursesForm, ProfessorForm, TitleForm
 from .models import Student, Course, Professors, Title
-from .queries import get_students_and_there_courses_credits, get_teacher_disciplines_and_students_count
+from .queries import get_students_and_there_courses_credits, get_teacher_disciplines_and_students_count, get_top_courses
 
 
 class StudentsAndCoursesCredits(View):
@@ -21,6 +21,13 @@ class TeacherDisciplinesAndStudentsCount(View):
 
         context = {'professors': professors}
         return render(request, 'get_professors_and_there_courses_and_student_count.html', context)
+
+
+class TopCourses(View):
+    def get(self, request, *args, **kwargs):
+        courses = Course.objects.raw(get_top_courses())
+        context = {'courses': courses}
+        return render(request, 'get_top_courses.html', context)
 
 
 class StudentView(View):
