@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from main.views import CourseView, ProfessorView, TitleView, StudentView, StudentsAndCoursesCredits
+from main.views import CourseView, ProfessorView, TitleView, StudentView, StudentsAndCoursesCredits, \
+    TeacherDisciplinesAndStudentsCount
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,4 +10,5 @@ urlpatterns = [
     path('professor/', ProfessorView.as_view()),
     path('titles/', TitleView.as_view()),
     path('students-courses-credits/', StudentsAndCoursesCredits.as_view()),
+    path('professor-courses-student-count/', TeacherDisciplinesAndStudentsCount.as_view()),
 ]

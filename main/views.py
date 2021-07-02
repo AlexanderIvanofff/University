@@ -1,9 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
 from .forms import StudentForm, CoursesForm, ProfessorForm, TitleForm
 from .models import Student, Course, Professors, Title
-from .queries import get_students_and_there_courses_credits
+from .queries import get_students_and_there_courses_credits, get_teacher_disciplines_and_students_count
 
 
 class StudentsAndCoursesCredits(View):
@@ -12,6 +13,14 @@ class StudentsAndCoursesCredits(View):
 
         context = {'students': students}
         return render(request, 'get_students_and_there_courses_credits.html', context)
+
+
+class TeacherDisciplinesAndStudentsCount(View):
+    def get(self, request, *args, **kwargs):
+        professors = Professors.objects.raw(get_teacher_disciplines_and_students_count())
+
+        context = {'professors': professors}
+        return render(request, 'get_professors_and_there_courses_and_student_count.html', context)
 
 
 class StudentView(View):

@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Professors and there courses and student count</title>
+</head>
+<body>
+<h1>Professors and there Course and Students Count</h1>
+    <ul>
+        {% for profesor in professors %}
+            <li>
+                Professors - {{ profesor.first_name }}  {{ profesor.last_name }} - Courses - {{ profesor.title }} - Student Count - {{ profesor.count }}
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</body>
+</html>
