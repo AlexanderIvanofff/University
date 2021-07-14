@@ -6,24 +6,41 @@
 </head>
 <body>
 <h1>Total Students</h1>
-<div data-model-name="add-form">
-    <ul>
-        {% for student in students %}
-            <li>
-                {{ student.first_name }} {{ student.last_name }} {{ student.courses }}
-            </li>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Courses</th>
+            <th>Delete Student</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for student in students %}
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.courses }}</td>
+                <td><button><a href="/total_students/{{ student.id }}/delete/"> delete </a></button></td>
+
+        </tr>
+        </tbody>
         {% endfor %}
-    </ul>
+    </table>
 </div>
 
 <h1>Add new student</h1>
+
 <form class="add" action="." method="POST">
     {{ form.as_p }}
     <input type="submit" value="Add Student"/>
     {% csrf_token %}
 </form>
 
-
+<button>
+    <a href="http://127.0.0.1:8000/courses/"> Courses </a>
+</button>
 
 </body>
 </html>

@@ -1,5 +1,8 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+
+from django.shortcuts import render, redirect
 from django.views import View
 
 from .forms import StudentForm, CoursesForm, ProfessorForm, TitleForm
@@ -56,6 +59,14 @@ class StudentView(View):
             form = StudentForm()
         context = {'students': students, 'form': form}
         return render(request, 'students.html', context)
+
+
+class DeleteStudent:
+    @staticmethod
+    def delete_students(request, student_id):
+        student = Student.objects.get(id=student_id)
+        student.delete()
+        return redirect('/total_students/')
 
 
 class CourseView(View):
